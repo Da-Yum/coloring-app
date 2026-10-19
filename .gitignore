@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+node_modules/
+
+# 도안을 만들 때 참고한 원본 이미지와 QA 산출물.
+# 남의 저작물이라 공개 저장소에 올리지 않는다.
+artifacts/

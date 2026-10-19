@@ -1,0 +1,121 @@
+[
+  {
+    "id": "hachuping",
+    "title": "하츄핑",
+    "lineart": "assets/drawings/hachuping.png",
+    "thumbnail": "assets/drawings/hachuping_thumb.png",
+    "cost": 0,
+    "palette": [
+      "#FAE7F0",
+      "#DF5190",
+      "#CA3977",
+      "#E972A6",
+      "#DFB903",
+      "#DBF0FB",
+      "#FFFFFF",
+      "#190102"
+    ]
+  },
+  {
+    "id": "baroping",
+    "title": "바로핑",
+    "lineart": "assets/drawings/baroping.png",
+    "thumbnail": "assets/drawings/baroping_thumb.png",
+    "cost": 0,
+    "palette": [
+      "#8FD0F0",
+      "#F7D774",
+      "#F2A6C0",
+      "#B9E3B0",
+      "#D6C3F0",
+      "#F7C8A0",
+      "#FFFFFF",
+      "#4A3B32"
+    ]
+  },
+  {
+    "id": "ajaping",
+    "title": "아자핑",
+    "lineart": "assets/drawings/ajaping.png",
+    "thumbnail": "assets/drawings/ajaping_thumb.png",
+    "cost": 0,
+    "palette": [
+      "#9BE0D8",
+      "#F7B8A0",
+      "#F7E08A",
+      "#C3D9F7",
+      "#F2A6C0",
+      "#BFE3A8",
+      "#FFFFFF",
+      "#44524F"
+    ]
+  },
+  {
+    "id": "laraping",
+    "title": "라라핑",
+    "lineart": "assets/drawings/laraping.png",
+    "thumbnail": "assets/drawings/laraping_thumb.png",
+    "cost": 0,
+    "palette": [
+      "#C9B8E8",
+      "#F7A8C8",
+      "#F7D774",
+      "#A8D8F0",
+      "#B9E3B0",
+      "#F7C0A8",
+      "#FFFFFF",
+      "#453A55"
+    ]
+  },
+  {
+    "id": "chiikawa",
+    "title": "치이카와",
+    "lineart": "assets/drawings/chiikawa.png",
+    "thumbnail": "assets/drawings/chiikawa_thumb.png",
+    "cost": 0,
+    "palette": [
+      "#FFFFFF",
+      "#F7EFE2",
+      "#F2B8C6",
+      "#E8A0A8",
+      "#F7D774",
+      "#A8D4E8",
+      "#D9C9B6",
+      "#4A3B32"
+    ]
+  },
+  {
+    "id": "hachiware",
+    "title": "하치와레",
+    "lineart": "assets/drawings/hachiware.png",
+    "thumbnail": "assets/drawings/hachiware_thumb.png",
+    "cost": 0,
+    "palette": [
+      "#FFFFFF",
+      "#CFE6F7",
+      "#7FB8E0",
+      "#3C6E9F",
+      "#F2B8C6",
+      "#F7D774",
+      "#F2EDE6",
+      "#2E3A47"
+    ]
+  },
+  {
+    "id": "usagi",
+    "title": "우사기",
+    "lineart": "assets/drawings/usagi.png",
+    "thumbnail": "assets/drawings/usagi_thumb.png",
+    "cost": 0,
+    "palette": [
+      "#F7DE8A",
+      "#F7EFD2",
+      "#E8B45C",
+      "#F2A6B8",
+      "#A8D4E8",
+      "#BFE3A8",
+      "#FFFFFF",
+      "#4A3B32"
+    ]
+  }
+]

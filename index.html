@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FDF6EC">
+<title>색칠놀이</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 시작 화면 -->
+<section class="screen" id="screen-start">
+  <button class="icon-btn gear" id="btn-options" aria-label="옵션">⚙</button>
+  <button class="icon-btn lock hold-btn" id="btn-parent" aria-label="부모님 설정">
+    <span class="hold-face">🔒</span>
+    <svg class="hold-ring" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"></circle></svg>
+  </button>
+  <div class="tokens" id="tokens-start" hidden></div>
+
+  <div class="start-box">
+    <h1 class="title">색칠놀이</h1>
+    <button class="big-btn" id="btn-begin">시작하기</button>
+    <button class="ghost-btn" id="btn-gallery">내 작품</button>
+  </div>
+</section>
+
+<!-- 도안 선택 화면 -->
+<section class="screen" id="screen-select">
+  <header class="topbar">
+    <button class="back-btn" id="btn-select-back">← 처음으로</button>
+    <div class="tokens" id="tokens-select" hidden></div>
+  </header>
+  <div class="grid" id="drawing-grid"></div>
+</section>
+
+<!-- 칠하기 화면 -->
+<section class="screen" id="screen-paint">
+  <aside class="side side-left">
+    <button class="back-btn small" id="btn-paint-back">← 도안 고르기</button>
+    <div class="tools" id="tool-list"></div>
+    <div class="undo-row">
+      <button class="icon-btn" id="btn-undo" aria-label="되돌리기" disabled>↶</button>
+      <button class="icon-btn" id="btn-redo" aria-label="다시하기" disabled>↷</button>
+      <button class="icon-btn hold-btn" id="btn-clear" aria-label="다 지우기">
+        <span class="hold-face">🗑</span>
+        <svg class="hold-ring" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"></circle></svg>
+      </button>
+    </div>
+  </aside>
+
+  <div class="canvas-area" id="canvas-area">
+    <div class="canvas-wrap" id="canvas-wrap">
+      <canvas id="layer-bg"></canvas>
+      <canvas id="layer-paint"></canvas>
+      <canvas id="layer-stroke"></canvas>
+      <canvas id="layer-line"></canvas>
+    </div>
+    <div class="busy" id="region-busy" hidden>도안을 보는 중…</div>
+  </div>
+
+  <aside class="side side-right">
+    <div class="palette" id="palette"></div>
+    <div class="advanced" id="advanced-colors" hidden>
+      <div id="picker-mount"></div>
+      <div class="recent" id="recent-colors"></div>
+    </div>
+    <div class="sizes" id="size-list"></div>
+    <button class="done-btn" id="btn-done">완료 ✓</button>
+  </aside>
+</section>
+
+<!-- 완료 화면 -->
+<section class="screen" id="screen-done">
+  <div class="done-box">
+    <h2 class="title small">다 칠했어요!</h2>
+    <div class="preview-wrap"><img id="done-preview" alt="완성 그림"></div>
+    <div class="done-actions">
+      <button class="big-btn" id="btn-save">갤러리에 저장</button>
+      <button class="ghost-btn" id="btn-keep">계속 칠하기</button>
+      <button class="ghost-btn" id="btn-home">처음으로</button>
+    </div>
+  </div>
+  <canvas class="confetti" id="confetti"></canvas>
+</section>
+
+<!-- 내 작품 -->
+<section class="screen" id="screen-gallery">
+  <header class="topbar">
+    <button class="back-btn" id="btn-gallery-back">← 처음으로</button>
+    <h2 class="bar-title">내 작품</h2>
+  </header>
+  <div class="grid" id="gallery-grid"></div>
+  <p class="empty" id="gallery-empty" hidden>아직 저장한 그림이 없어요</p>
+</section>
+
+<!-- 부모 모드 -->
+<section class="screen" id="screen-parent">
+  <header class="topbar">
+    <button class="back-btn" id="btn-parent-back">← 나가기</button>
+    <h2 class="bar-title">부모님 설정</h2>
+    <div class="tokens" id="tokens-parent"></div>
+  </header>
+
+  <div class="parent-body">
+    <section class="card-box">
+      <h3>착한 일</h3>
+      <p class="hint">항목을 누르면 별을 줍니다</p>
+      <div class="deeds" id="deed-list"></div>
+      <form class="deed-add" id="deed-add">
+        <input type="text" id="deed-label" placeholder="새 착한 일" maxlength="20" required>
+        <input type="text" id="deed-emoji" placeholder="🙂" maxlength="4">
+        <input type="number" id="deed-reward" value="1" min="1" max="9">
+        <button type="submit" class="ghost-btn tight">추가</button>
+      </form>
+    </section>
+
+    <section class="card-box">
+      <h3>별 조정</h3>
+      <div class="adjust">
+        <button class="icon-btn" id="btn-token-minus">−</button>
+        <span class="token-big" id="token-count">0</span>
+        <button class="icon-btn" id="btn-token-plus">+</button>
+      </div>
+
+      <h3>잠금 관리</h3>
+      <div class="locks" id="lock-list"></div>
+
+      <h3>암호</h3>
+      <button class="ghost-btn tight" id="btn-change-pin">암호 바꾸기</button>
+    </section>
+
+    <section class="card-box">
+      <h3>기록</h3>
+      <div class="history-list" id="deed-history"></div>
+    </section>
+  </div>
+</section>
+
+<!-- 옵션 패널 -->
+<div class="overlay" id="overlay-options" hidden>
+  <div class="panel">
+    <h3>옵션</h3>
+    <div class="opt-list" id="opt-list"></div>
+    <button class="big-btn" id="btn-options-close">닫기</button>
+  </div>
+</div>
+
+<!-- 확인 대화상자 -->
+<div class="overlay" id="overlay-confirm" hidden>
+  <div class="panel">
+    <h3 id="confirm-text">그만할까요?</h3>
+    <div class="confirm-actions">
+      <button class="big-btn" id="btn-confirm-yes">네</button>
+      <button class="ghost-btn" id="btn-confirm-no">아니요</button>
+    </div>
+  </div>
+</div>
+
+<!-- 선택 대화상자 (이어서 칠하기 등) -->
+<div class="overlay" id="overlay-choice" hidden>
+  <div class="panel">
+    <h3 id="choice-text"></h3>
+    <div class="confirm-actions" id="choice-actions"></div>
+  </div>
+</div>
+
+<!-- 암호 -->
+<div class="overlay" id="overlay-pin" hidden>
+  <div class="panel">
+    <h3 id="pin-title">암호를 넣어 주세요</h3>
+    <div class="pin-dots" id="pin-dots"></div>
+    <div class="keypad" id="pin-pad"></div>
+    <div class="pin-foot">
+      <button class="ghost-btn tight" id="btn-pin-cancel">취소</button>
+      <button class="link-btn" id="btn-pin-forgot">암호를 잊었어요</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+<div class="star-fly" id="star-fly" hidden>⭐</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
