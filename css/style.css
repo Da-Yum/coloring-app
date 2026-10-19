@@ -510,3 +510,30 @@ input { font: inherit; color: inherit; }
   background: rgba(255, 255, 255, .92);
   box-shadow: 0 3px 12px rgba(74, 59, 50, .2);
 }
+
+/* 되돌리기·다시하기·휴지통도 그림 아이콘이다.
+   아이콘이 크림색 타일을 품고 있으니 버튼의 흰 배경과 테두리를 걷어낸다. */
+.undo-row .icon-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  overflow: visible;
+}
+.undo-row .icon-btn img,
+.undo-row .hold-face img { width: 100%; height: 100%; display: block; object-fit: contain; }
+.undo-row .hold-face {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.undo-row .icon-btn:not(:disabled):active { background: transparent; transform: scale(.93); }
+.undo-row .hold-btn.is-holding { background: transparent; }
+
+/* 시작 화면의 설정 버튼도 마찬가지 */
+#screen-start .icon-btn#btn-options {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+#btn-options img { width: 100%; height: 100%; display: block; object-fit: contain; }

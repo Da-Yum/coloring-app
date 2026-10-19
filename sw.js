@@ -3,7 +3,7 @@
 // 코드를 고치면 CACHE 값을 올린다. 그래야 옛 캐시를 버리고 새로 받는다.
 // GitHub Pages 하위 경로에서도 되도록 경로는 전부 상대 경로다.
 
-const CACHE = 'coloring-v8';
+const CACHE = 'coloring-v9';
 
 const SHELL = [
   './',
@@ -50,6 +50,10 @@ const SHELL = [
   './assets/icons/tools/crayon.png',
   './assets/icons/tools/fill.png',
   './assets/icons/tools/eraser.png',
+  './assets/icons/tools/pen.png',
+  './assets/icons/tools/undo.png',
+  './assets/icons/tools/redo.png',
+  './assets/icons/tools/trash.png',
   './assets/icons/tools/gear.png',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',

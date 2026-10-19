@@ -8,10 +8,14 @@
 
 const IMAGE_ICONS = {
   brush:  'assets/icons/tools/brush.png',
+  pen:    'assets/icons/tools/pen.png',
   pencil: 'assets/icons/tools/pencil.png',
   crayon: 'assets/icons/tools/crayon.png',
   fill:   'assets/icons/tools/fill.png',
   eraser: 'assets/icons/tools/eraser.png',
+  undo:   'assets/icons/tools/undo.png',
+  redo:   'assets/icons/tools/redo.png',
+  trash:  'assets/icons/tools/trash.png',
   gear:   'assets/icons/tools/gear.png',
   lock:   'assets/icons/tools/lock.png',
   star:   'assets/icons/tools/star.png',
@@ -23,11 +27,6 @@ const SVG = (body) =>
 
 // 그림 아이콘이 아직 없는 것들
 const DRAWN_ICONS = {
-  // 펜 — 또렷한 촉
-  pen: SVG(
-    '<path d="M4 20l1.2-3.6L15.4 6.2a1.7 1.7 0 0 1 2.4 0l.8.8a1.7 1.7 0 0 1 0 2.4L8.4 19.4 4 20z"/>' +
-    '<path d="M14.2 7.4l2.4 2.4"/>',
-  ),
   // 반짝이 — 큰 별 하나와 작은 별 둘
   glitter: SVG(
     '<path d="M11 3.5l1.7 4 4 1.7-4 1.7-1.7 4-1.7-4-4-1.7 4-1.7z" fill="currentColor" fill-opacity=".25"/>' +
@@ -57,7 +56,7 @@ export function setIcon(el, name, label = '') {
   }
 
   el.classList.add('ico--drawn');
-  el.insertAdjacentHTML('afterbegin', DRAWN_ICONS[name] || DRAWN_ICONS.pen);
+  el.insertAdjacentHTML('afterbegin', DRAWN_ICONS[name] || DRAWN_ICONS.glitter);
 }
 
 export function iconUrl(name) {

@@ -441,6 +441,12 @@ export function init(a) {
   });
 
   renderSizes();
+  for (const [id, name, label] of [
+    ['btn-undo', 'undo', '되돌리기'],
+    ['btn-redo', 'redo', '다시하기'],
+  ]) setIcon(document.getElementById(id), name, label);
+  setIcon(document.querySelector('#btn-clear .hold-face'), 'trash', '다 지우기');
+
   mountPicker(document.getElementById('picker-mount'), (hex) => setColor(hex));
 
   document.getElementById('btn-undo').addEventListener('click', () => {
